@@ -1,9 +1,10 @@
-import { ScrollView, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { ScrollView, StyleSheet, Text, View, Button, Switch } from 'react-native'
+import React, { useState } from 'react'
 
 const HomeScreen = () => {
 
-  const items = Array.from({ length: 200 }, (_, i) => `Item ${i + 1}`)
+  const items = Array.from({ length: 5 }, (_, i) => `Item ${i + 1}`)
+  const [isDark, setIsDark] = useState(false);
 
   return (
     <ScrollView style={{ flex: 1, backgroundColor: "#aaa", padding: 2 }} contentContainerStyle={
@@ -32,7 +33,9 @@ const HomeScreen = () => {
 
         ))
       }
+      <Button title="Hello i am button" color={"green"} onPress={() => alert("hello world")} />
 
+      <Switch value={isDark} onValueChange={setIsDark} trackColor={{ false: "#ddd", true: "rgb(244, 240, 11)" }} thumbColor={'purple'} />
     </ScrollView >
   )
 }
