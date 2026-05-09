@@ -8,7 +8,10 @@ const HomeScreen = () => {
       <Image source={{ uri: 'https://chaicode.com/assets/hitesh-piyush-dark-fpMoT6Mp.webp' }}
         width={200}
         height={200}
+
       />
+      <Image source={require('@/assets/images/icon.png')} height={30} width={30} style={{ height: 30, width: 30 }} />
+
     </View>
   )
 }
