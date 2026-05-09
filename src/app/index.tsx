@@ -1,42 +1,30 @@
-import { ScrollView, StyleSheet, Text, View, Button, Switch } from 'react-native'
-import React, { useState } from 'react'
+import { ScrollView, StyleSheet, Text, View, Button, Switch, FlatList, } from 'react-native'
+import { useState } from 'react'
 
 const HomeScreen = () => {
+  const USERS = [
+    { id: '1', name: 'Alice Johnson', role: 'Designer' },
+    { id: '2', name: 'Bob Smith', role: 'Developer' },
+    { id: '3', name: 'Carol White', role: 'Manager' },
+    { id: '4', name: 'David Brown', role: 'Developer' },
+    { id: '5', name: 'Eve Davis', role: 'Designer' },
+  ];
 
-  const items = Array.from({ length: 5 }, (_, i) => `Item ${i + 1}`)
-  const [isDark, setIsDark] = useState(false);
+
 
   return (
-    <ScrollView style={{ flex: 1, backgroundColor: "#aaa", padding: 2 }} contentContainerStyle={
-      {
-        padding: 16,
-        alignItems: "center"
-      }
-    }>
-      {
-        items.map(item => (
-          <View
-            key={item}
-            style={{
-              backgroundColor: 'white',
-              padding: 16,
-              borderRadius: 10,
-              marginBottom: 10,
-              shadowColor: '#000',
-              shadowOpacity: 0.05,
-              shadowRadius: 4,
-              elevation: 2,
-            }}
-          >
-            <Text style={{ fontSize: 16 }}>{item}</Text>
-          </View>
+    <FlatList
+      data={USERS}
+      keyExtractor={(item) => item.id}
+      contentContainerStyle={{ padding: 16, backgroundColor: 'green' }}
+      renderItem={({ item }) => (
+        <Text>{item.name}</Text>
+      )}
+      ItemSeparatorComponent={() => (<View style={{ height: 1, backgroundColor: "black" }} />)}
 
-        ))
-      }
-      <Button title="Hello i am button" color={"green"} onPress={() => alert("hello world")} />
+    />
 
-      <Switch value={isDark} onValueChange={setIsDark} trackColor={{ false: "#ddd", true: "rgb(244, 240, 11)" }} thumbColor={'purple'} />
-    </ScrollView >
+
   )
 }
 
