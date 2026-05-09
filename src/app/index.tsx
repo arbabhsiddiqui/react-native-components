@@ -1,6 +1,8 @@
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { useState } from 'react'
+import { Image, StyleSheet, Text, View, TextInput } from 'react-native'
 
 const HomeScreen = () => {
+  const [name, setName] = useState("")
   return (
     <View>
       <Text>HomeScreen</Text>
@@ -8,10 +10,14 @@ const HomeScreen = () => {
       <Image source={{ uri: 'https://chaicode.com/assets/hitesh-piyush-dark-fpMoT6Mp.webp' }}
         width={200}
         height={200}
-
       />
-      <Image source={require('@/assets/images/icon.png')} height={30} width={30} style={{ height: 30, width: 30 }} />
-
+      <Image source={require('@/assets/images/icon.png')} style={{ height: 30, width: 30 }} />
+      <TextInput placeholderTextColor={"green"} placeholder='enter name' value={name} onChangeText={setName} style={{
+        borderWidth: 1,
+        borderColor: '#000',
+        marginTop: 30,
+        fontSize: 24
+      }} />
     </View>
   )
 }
